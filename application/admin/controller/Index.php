@@ -334,7 +334,12 @@ class Index
     public function enQrcode($url){
 
         $qr_code = new QrcodeServer(['generate'=>"display","size",200]);
+       
         $content = $qr_code->createServer($url);
+        //var_dump($qr_code);exit;
+        //$data = response($content,200,['Content-Length'=>strlen($content)])->contentType('image/png');
+        //return $data->getData();
+        //header('Content-Type', 'image/png;charset=GBK');
 
         return response($content,200,['Content-Length'=>strlen($content)])->contentType('image/png');
 
