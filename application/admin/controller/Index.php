@@ -341,7 +341,12 @@ class Index
         //return $data->getData();
         //header('Content-Type', 'image/png;charset=GBK');
 
-        return response($content,200,['Content-Length'=>strlen($content)])->contentType('image/png');
+        ob_start();
+        $content = ob_get_clean();
+        $result = response($content,200,['Content-Length'=>strlen($content)])->contentType('image/png');
+        
+        //throw new HttpResponseException($response);
+        return  $result;
 
     }
 
