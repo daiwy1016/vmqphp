@@ -29,6 +29,9 @@ Route::any('appPush','index/index/appPush');
 
 Route::any('closeEndOrder','index/index/closeEndOrder');
 
+Route::any('notifyUrl','index/index/notifyUrl');
+Route::any('returnUrl','index/index/returnUrl');
+
 
 return [
 
