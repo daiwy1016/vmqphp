@@ -31,6 +31,7 @@ Route::any('closeEndOrder','index/index/closeEndOrder');
 
 Route::any('notifyUrl','index/index/notifyUrl');
 Route::any('returnUrl','index/index/returnUrl');
+Route::any('vmqphp','index/index/vmqphp');
 
 
 return [

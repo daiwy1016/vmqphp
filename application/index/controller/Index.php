@@ -662,4 +662,40 @@ class Index
         
     }
 
+    //创建订单
+    public function vmqphp()
+    {
+        ini_set("error_reporting","E_ALL & ~E_NOTICE");
+        // $payId = input("payId");
+        //http://192.168.1.103:81/index.php?
+        //parter=362296660&type=1004&value=50&orderid=10104840208680008
+        //&callbackurl=http://192.168.1.103:7878/paycallback/ykpaybankwx.html
+        //&hrefbackurl=http://192.168.1.103:7878/paycallback/ykpaybankwx.html
+        //&payerIp=192.168.1.103&attach=longbao&sign=8362af6eee5743ed5535d87b065bb3fd&agent=
+        $parter = input("parter");
+        $type = input("type");
+        $value = input("value");
+        $orderid = input("orderid");
+        $callbackurl = input("callbackurl");
+        $hrefbackurl = input("hrefbackurl");
+        $payerIp = input("payerIp");
+        $longbao = input("longbao");
+        $sign = input("sign");
+        $agent = input("agent");
+
+        $param = $parter.$sign;
+        $payId = $orderid;
+        $type = 1;
+        $price = $value;
+
+
+        $key = "mykey5201314zyl";//通讯密钥
+        $host = "/createOrder";
+        $sign = md5($payId.$param.$type.$price.$key);
+        $p = "payId=".$payId.'&param='.$param.'&type='.$type."&price=".$price.'&sign='.$sign.'&isHtml=1';
+        echo "<script>window.location.href = '".$host."?".$p."'</script>";     
+        
+    }
+    
+
 }
