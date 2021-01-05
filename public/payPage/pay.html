@@ -35,7 +35,12 @@
     <div class="mod-ct">
         <div class="order">
         </div>
-        <div class="amount" id="timeOut" style="font-size: 20px;color: red;display: none;"><p>订单已过期，请您返回网站重新发起支付</p><br></div>
+        <div class="amount" id="timeOut" style="font-size: 20px;color: red;display: none;"><p>订单已过期，请您返回网站重新发起支付</p><br>
+            <p>
+               或您已支付无到账问题请联系QQ418589573补单<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=418589573&amp;site=qq&amp;menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:418589573:51" alt="点击这里给我发消息" title="点击这里给我发消息"></a>
+            
+            </p><br>
+    </div>
         <div id="orderbody">
             <div class="amount" id="money">￥{{ reallyPrice }}</div>
             <div class="qrcode-img-wrapper" data-role="qrPayImgWrapper">
@@ -78,10 +83,13 @@
             <div class="tip">
                 <div class="ico-scan"></div>
                 <div class="tip-text">
-                    <p>请使用{{payType1}}扫一扫</p>
-
+                    <p style="color:red;">个人免签：您可以支付1元来验证是否充值成功，在充值其他金额！</p>
+                    <p>请使用{{payType1}}扫一扫</p>                    
                     <p v-if="isAuto == 0">扫描二维码完成支付</p>
                     <p v-if="isAuto == 1">扫码后输入金额支付</p>
+                    <p>
+                        若发现您已支付无到账问题请联系QQ418589573补单<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=418589573&amp;site=qq&amp;menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:418589573:51" alt="点击这里给我发消息" title="点击这里给我发消息"></a>
+                    </p>
 
                 </div>
             </div>

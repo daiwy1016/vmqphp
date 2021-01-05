@@ -633,6 +633,15 @@ class Index
         }        
         echo "success";           
         //继续业务流程
+        //回调通知发货
+        //http://192.168.1.103:7878/paycallback/ykpaybankwx.html?opstate=0&orderid=10104787105850005&ovalue=25&sign=8c99a8fcdc0527823d09612983bf02ae&msg=2123
+        
+        $orderParams = json_decode(base64_decode($param),true);        
+        $content = "orderid=".$orderParams['orderid']."&opstate=0&ovalue=".$orderParams['value']."17cdbbfc9ba653f34a5ef9e8f86d7634";
+        $sign = md5($content);
+        $url = $orderParams['callbackurl']."?opstate=0&orderid=".$orderParams['orderid']."&ovalue=".$orderParams['value']."&sign=".$sign;   
+        $re = $this->getCurl($url);
+        //if($re == 'opstate=0'){  echo "success";       }
         //echo "商户订单号：".$payId ."<br>自定义参数：". $param ."<br>支付方式：". $type ."<br>订单金额：". $price ."<br>实际支付金额：". $reallyPrice;
         
     }
@@ -658,7 +667,19 @@ class Index
         }        
         echo "success";           
         //继续业务流程
-        echo "商户订单号：".$payId ."<br>自定义参数：". $param ."<br>支付方式：". $type ."<br>订单金额：". $price ."<br>实际支付金额：". $reallyPrice;
+        $host="http://zf.963my.com:7878/sel/queOrderStatus.html";
+        echo "<script>window.location.href = '".$host."?orderId=".$payId."'</script>";  
+        //echo "商户订单号：".$payId ."<br>自定义参数：". $param ."<br>支付方式：". $type ."<br>订单金额：". $price ."<br>实际支付金额：". $reallyPrice;
+
+        /*
+        $orderParams = json_decode(base64_decode($param),true);
+        echo base64_decode($param);
+        $content = "orderid=".$orderParams['orderid']."&opstate=0&ovalue=".$orderParams['value']."17cdbbfc9ba653f34a5ef9e8f86d7634";
+        $sign = md5($content);
+
+        $url = $orderParams['callbackurl']."?opstate=0&orderid=".$orderParams['orderid']."&ovalue=".$orderParams['value']."&sign=".$sign;
+        echo base64_decode($url);
+        */
         
     }
 
@@ -683,7 +704,7 @@ class Index
         $sign = input("sign");
         $agent = input("agent");
 
-        $param = $parter.$sign;
+        $param = base64_encode(json_encode(input()));
         $payId = $orderid;
         $type = 1;
         $price = $value;
