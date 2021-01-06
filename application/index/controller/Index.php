@@ -706,7 +706,21 @@ class Index
 
         $param = base64_encode(json_encode(input()));
         $payId = $orderid;
-        $type = 1;
+        switch ($type) {
+            case '1004':
+                # code...
+                $type = 1;
+                break;
+            case '992':
+                # code...
+                $type = 2;
+                break;
+            default:
+                # code...
+                $type='';
+                break;
+        }
+        
         $price = $value;
 
 

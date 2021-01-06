@@ -86,7 +86,7 @@
                     <p style="color:red;">个人免签：您可以支付1元来验证是否充值成功，在充值其他金额！</p>
                     <p>请使用{{payType1}}扫一扫</p>                    
                     <p v-if="isAuto == 0">扫描二维码完成支付</p>
-                    <p v-if="isAuto == 1">扫码后输入金额支付</p>
+                    <p v-if="isAuto == 1">扫码后请输入金额：<em style="color:red;">{{ reallyPrice }} </em>  元 支付，一分都不能少！</p>
                     <p>
                         若发现您已支付无到账问题请联系QQ418589573补单<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=418589573&amp;site=qq&amp;menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:418589573:51" alt="点击这里给我发消息" title="点击这里给我发消息"></a>
                     </p>
