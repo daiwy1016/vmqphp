@@ -704,7 +704,7 @@ class Index
         $sign = input("sign");
         $agent = input("agent");
 
-        $param = base64_encode(json_encode(input()));
+        $param = base64_encode(json_encode(input(),JSON_UNESCAPED_UNICODE));
         $payId = $orderid;
         switch ($type) {
             case '1004':
@@ -723,8 +723,8 @@ class Index
         
         $price = $value;
 
-
-        $key = "mykey5201314zyl";//通讯密钥
+        $res2 = Db::name("setting")->where("vkey","key")->find();
+        $key = $res2['vvalue'];//通讯密钥
         $host = "/createOrder";
         $sign = md5($payId.$param.$type.$price.$key);
         $p = "payId=".$payId.'&param='.$param.'&type='.$type."&price=".$price.'&sign='.$sign.'&isHtml=1';

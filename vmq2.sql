@@ -74,7 +74,7 @@ INSERT INTO `setting` VALUES ('user', 'admin');
 INSERT INTO `setting` VALUES ('pass', 'admin58451201314');
 INSERT INTO `setting` VALUES ('notifyUrl', 'http://vmqphp.test/notifyUrl');
 INSERT INTO `setting` VALUES ('returnUrl', 'http://vmqphp.test/returnUrl');
-INSERT INTO `setting` VALUES ('key', 'mykey5201314zyl');
+INSERT INTO `setting` VALUES ('key', '123456789');
 INSERT INTO `setting` VALUES ('lastheart', '1603178954');
 INSERT INTO `setting` VALUES ('lastpay', '0');
 INSERT INTO `setting` VALUES ('jkstate', '1');

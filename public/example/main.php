@@ -1,7 +1,7 @@
 <?php
 ini_set("error_reporting","E_ALL & ~E_NOTICE");
 
-$key = "mykey5201314zyl";//通讯密钥
+$key = "123456789";//通讯密钥
 $host = "../createOrder";
 
 $sign = md5($_GET['payId'].$_GET['param'].$_GET['type'].$_GET['price'].$key);

@@ -238,7 +238,15 @@ class Index
         }
 
 
-        $array = $obj->order("id","desc")->select();
+        $array = $obj->order("id","desc")
+        ->withAttr('param', function($value,$data) {
+            if($this->is_base64($value) == true){
+                return base64_decode($value);
+            }
+            return $value;
+           
+        })
+        ->select();
 
         //echo $obj->getLastSql();
         return json(array(
@@ -365,8 +373,13 @@ class Index
 
 
 
-
-
+    //判断是否base64
+    public function is_base64($str){
+        if($str === base64_encode(base64_decode($str))){
+            return true;
+        }
+        return false;
+    }
 
 
     //获取客户IP
