@@ -635,7 +635,8 @@ class Index
         //继续业务流程
         //回调通知发货
         //http://192.168.1.103:7878/paycallback/ykpaybankwx.html?opstate=0&orderid=10104787105850005&ovalue=25&sign=8c99a8fcdc0527823d09612983bf02ae&msg=2123
-        
+        $re = $this->getCurl("http://zf.963my.com/callback.php?".http_build_query($_GET));
+        exit;
         $orderParams = json_decode(base64_decode($param),true);        
         $content = "orderid=".$orderParams['orderid']."&opstate=0&ovalue=".$orderParams['value']."17cdbbfc9ba653f34a5ef9e8f86d7634";
         $sign = md5($content);
