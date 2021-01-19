@@ -634,7 +634,7 @@ class Index
         echo "success";           
         //继续业务流程
         //回调通知发货        
-        $re = $this->getCurl("http://zf.963my.com/callback.php?".http_build_query($_GET));
+        $re = $this->getCurl("http://zf.963my.com:9090/callback.php?".http_build_query($_GET));
         exit;  
         //if($re == 'opstate=0'){  echo "success";       }
         //echo "商户订单号：".$payId ."<br>自定义参数：". $param ."<br>支付方式：". $type ."<br>订单金额：". $price ."<br>实际支付金额：". $reallyPrice;
