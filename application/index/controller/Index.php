@@ -635,7 +635,7 @@ class Index
         //继续业务流程
         //回调通知发货        
         $re = $this->getCurl("http://zf.963my.com:9090/callback.php?".http_build_query($_GET));
-        exit;  
+        
         //if($re == 'opstate=0'){  echo "success";       }
         //echo "商户订单号：".$payId ."<br>自定义参数：". $param ."<br>支付方式：". $type ."<br>订单金额：". $price ."<br>实际支付金额：". $reallyPrice;
         
@@ -665,16 +665,6 @@ class Index
         $host="http://zf.963my.com:7878/sel/queOrderStatus.html";
         echo "<script>window.location.href = '".$host."?orderId=".$payId."'</script>";  
         //echo "商户订单号：".$payId ."<br>自定义参数：". $param ."<br>支付方式：". $type ."<br>订单金额：". $price ."<br>实际支付金额：". $reallyPrice;
-
-        /*
-        $orderParams = json_decode(base64_decode($param),true);
-        echo base64_decode($param);
-        $content = "orderid=".$orderParams['orderid']."&opstate=0&ovalue=".$orderParams['value']."17cdbbfc9ba653f34a5ef9e8f86d7634";
-        $sign = md5($content);
-
-        $url = $orderParams['callbackurl']."?opstate=0&orderid=".$orderParams['orderid']."&ovalue=".$orderParams['value']."&sign=".$sign;
-        echo base64_decode($url);
-        */
         
     }
 
@@ -682,12 +672,6 @@ class Index
     public function vmqphp()
     {
         ini_set("error_reporting","E_ALL & ~E_NOTICE");
-        // $payId = input("payId");
-        //http://192.168.1.103:81/index.php?
-        //parter=362296660&type=1004&value=50&orderid=10104840208680008
-        //&callbackurl=http://192.168.1.103:7878/paycallback/ykpaybankwx.html
-        //&hrefbackurl=http://192.168.1.103:7878/paycallback/ykpaybankwx.html
-        //&payerIp=192.168.1.103&attach=longbao&sign=8362af6eee5743ed5535d87b065bb3fd&agent=
         $parter = input("parter");
         $type = input("type");
         $value = input("value");
