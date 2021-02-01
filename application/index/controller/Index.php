@@ -662,10 +662,38 @@ class Index
         }        
         echo "success";           
         //继续业务流程
-        $host="http://zf.963my.com:7878/sel/queOrderStatus.html";
-        echo "<script>window.location.href = '".$host."?orderId=".$payId."'</script>";  
+        $returnUrl = "http://zf.963my.com:7878/sel/queOrderStatus.html?orderId=".$payId;
+        if($this->is_base64($param)){
+            $p =base64_decode($param);
+            if(!empty($p['hrefbackurl'])){
+                $hrefbackurl = parse_url($p['hrefbackurl']);
+                if($empty($hrefbackurl['host'])){
+                    switch ($hrefbackurl['host']) {
+                        case 'faka.963my.com':
+                            # code...                            
+                            header("Location:".$hrefbackurl['host']."?orderId=".$hrefbackurl['orderid']);
+                            $returnUrl = $p['hrefbackurl']."?orderId=".$hrefbackurl['orderid'];
+                            break;                        
+                        default:
+                            # code...
+                            break;
+                    }
+                }
+            }
+        }
+        header("Location:".$returnUrl);
+
+        //$host="http://zf.963my.com:7878/sel/queOrderStatus.html";
+        //echo "<script>window.location.href = '".$host."?orderId=".$payId."'</script>";  
         //echo "商户订单号：".$payId ."<br>自定义参数：". $param ."<br>支付方式：". $type ."<br>订单金额：". $price ."<br>实际支付金额：". $reallyPrice;
         
+    }
+       //判断是否base64
+    public function is_base64($str){
+        if($str === base64_encode(base64_decode($str))){
+            return true;
+        }
+        return false;
     }
 
     //创建订单
