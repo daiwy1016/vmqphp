@@ -663,16 +663,22 @@ class Index
         echo "success";           
         //继续业务流程
         $returnUrl = "http://zf.963my.com:7878/sel/queOrderStatus.html?orderId=".$payId;
+
+        // $p =json_decode(base64_decode($param),true);
+        // var_dump($p['hrefbackurl']);
+        // $hrefbackurl = parse_url($p['hrefbackurl']);
+        // var_dump($hrefbackurl['host']);
+        // exit;
         if($this->is_base64($param)){
-            $p =base64_decode($param);
+            $p =json_decode(base64_decode($param),true);
             if(!empty($p['hrefbackurl'])){
                 $hrefbackurl = parse_url($p['hrefbackurl']);
-                if($empty($hrefbackurl['host'])){
+                if(!empty($hrefbackurl['host'])){
                     switch ($hrefbackurl['host']) {
                         case 'faka.963my.com':
                             # code...                            
-                            header("Location:".$hrefbackurl['host']."?orderId=".$hrefbackurl['orderid']);
-                            $returnUrl = $p['hrefbackurl']."?orderId=".$hrefbackurl['orderid'];
+                            //header("Location:".$p['host']."?orderId=".$p['orderid']);
+                            $returnUrl = $p['hrefbackurl']."?orderId=".$p['orderid'];
                             break;                        
                         default:
                             # code...
