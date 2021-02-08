@@ -71,7 +71,7 @@ CREATE TABLE `setting`  (
 -- Records of setting
 -- ----------------------------
 INSERT INTO `setting` VALUES ('user', 'admin');
-INSERT INTO `setting` VALUES ('pass', 'admin58451201314');
+INSERT INTO `setting` VALUES ('pass', 'admin');
 INSERT INTO `setting` VALUES ('notifyUrl', 'http://vmqphp.test/notifyUrl');
 INSERT INTO `setting` VALUES ('returnUrl', 'http://vmqphp.test/returnUrl');
 INSERT INTO `setting` VALUES ('key', '123456789');
